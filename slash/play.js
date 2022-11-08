@@ -75,6 +75,25 @@ module.exports = {
         .setThumbnail(song.thumbnail)
         .setFooter({ text: `Duration: ${song.duration}` });
     } else if (interaction.options.getSubcommand() === "playlist") {
+      let url = interaction.options.getString("url");
+      // Search on YouTube
+      const result = await client.player.search(url, {
+        requestedBy: interaction.player,
+        searchEngine: QueryType.YOUTUBE_PLAYLIST,
+      });
+      // Playlist not found
+      if (result.tracks.length === 0)
+        return interaction.editReply("Playlist not found!");
+
+      const playlist = result.playlist;
+      // Add Playlist to queue
+      await queue.addTracks(result.tracks);
+      // Specify what we added
+      embed
+        .setDescription(
+          `**[${result.tracks.length} songs from ${playlist.title}](${playlist.url})** are added to Queue!`
+        )
+        .setThumbnail(playlist.thumbnail);
     } else if (interaction.options.getSubcommand() === "search") {
     }
   },
