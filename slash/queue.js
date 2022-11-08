@@ -28,5 +28,33 @@ module.exports = {
 
     if (page > totalPages)
       return await interaction.editReply(`There are only ${totalPages} pages!`);
+
+    // Display queue
+    const queueString = queue.tracks
+      .slice(page * 10, page * 10 + 10)
+      .map((song, i) => {
+        // Backslash backticks to display in codeblock format
+        return `**${page * 10 + i + 1}. \`[${song.duration}]\` ${
+          song.title
+        } -- <@${song.requestedBy.id}`;
+      })
+      // Joins array of songs
+      .join("\n");
+    const currentSong = queue.currentSong;
+    await interaction.editReply;
+    embeds: [
+      new MessageEmbed()
+        .setDescription(
+          `**Currently Playing**\n` +
+            (currentSong
+              ? `\`[${currentSong.duration}]\` ${currentSong.title} -- <@${currentSong.requestedBy.id}>`
+              : "None") +
+            `\n**Queue**\n${queueString}`
+        )
+        .setFooter({
+          text: `Page ${page + 1} out of ${totalPages``}`,
+        })
+        .setThumbnail(currentSong.thumbnail),
+    ];
   },
 };
