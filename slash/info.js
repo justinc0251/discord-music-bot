@@ -2,7 +2,7 @@ const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
-  // Build quit command
+  // Build info command
   data: new SlashCommandBuilder()
     .setName("info")
     .setDescription("Shows info of current song"),
