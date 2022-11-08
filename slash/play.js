@@ -33,7 +33,7 @@ module.exports = {
       subcommand
         .setName("playlist")
         .setDescription("Load playlist from URL")
-        .addStringOption.option((option) =>
+        .addStringOption((option) =>
           option
             .setName("url")
             .setDescription("Playlist's URL")
