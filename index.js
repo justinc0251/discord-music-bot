@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const dotenv = require("dotenv");
+const { Client, GatewayIntentBits } = require('discord.js');const dotenv = require("dotenv");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
 const fs = require("fs");
@@ -15,8 +15,8 @@ const CLIENT_ID = "";
 const GUILD_ID = "";
 
 // Allows to see what guild our bot is in
-const client = new Discord.Client({
-  intents: ["GUILDS", "GUILD_VOICE_STATES"],
+const client = new Client({
+  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates],
 });
 
 client.slashcommands = new Discord.Collection();

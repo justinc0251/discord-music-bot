@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
   // Build queue command
@@ -43,7 +43,7 @@ module.exports = {
     const currentSong = queue.currentSong;
     await interaction.editReply;
     embeds: [
-      new MessageEmbed()
+      new EmbedBuilder()
         .setDescription(
           `**Currently Playing**\n` +
             (currentSong
