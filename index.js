@@ -60,4 +60,24 @@ if (LOAD_SLASH) {
         process.exit(1);
       }
     });
+} else {
+  client.on("ready", () => {
+    console.log(`Logged in as ${client.user.tag}`);
+  });
+  client.on("interactionCreate", (interaction) => {
+    async function handleCommand() {
+      // Returns if input is not a command
+      if (!interaction.isCommand()) return;
+      // Run slash command
+      const slashcmd = client.slashcommands.get(interaction.commandName);
+      if (!slashcmd) interaction.reply("Command not found");
+
+      // Gives bot more time to respond to slash command
+      await interaction.deferReply();
+      // Run command with client and interaction objects
+      await slashcmd.run({ client, interaction });
+    }
+    handleCommand();
+  });
+  client.login(TOKEN);
 }
