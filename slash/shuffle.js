@@ -9,7 +9,7 @@ module.exports = {
     const queue = client.player.getQueue(interaction.guildId);
 
     if (!queue) return await interaction.editReply("No songs!");
-    // Detroys queue, making bot leave voice
+    // Mixes order of queue
     queue.shuffle();
     await interaction.editReply(
       `The queue of ${queue.tracks.length} songs have been shuffled!`
