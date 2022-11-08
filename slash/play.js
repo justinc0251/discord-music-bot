@@ -95,6 +95,24 @@ module.exports = {
         )
         .setThumbnail(playlist.thumbnail);
     } else if (interaction.options.getSubcommand() === "search") {
+      let url = interaction.options.getString("searchterms");
+      // Search
+      const result = await client.player.search(url, {
+        requestedBy: interaction.player,
+        searchEngine: QueryType.AUTO,
+      });
+      // Song not found
+      if (result.tracks.length === 0)
+        return interaction.editReply("Song not found!");
+
+      const song = result.tracks[0];
+      // Add song to queue
+      await queue.addTrack(song);
+      // Specify what we added
+      embed
+        .setDescription(`**[${song.title}](${song.url})** is added to Queue!`)
+        .setThumbnail(song.thumbnail)
+        .setFooter({ text: `Duration: ${song.duration}` });
     }
   },
 };
