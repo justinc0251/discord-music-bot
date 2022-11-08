@@ -1,7 +1,8 @@
 const Discord = require("discord.js");
-const { Client, GatewayIntentBits } = require('discord.js');const dotenv = require("dotenv");
+const { Client, GatewayIntentBits } = require('discord.js');
+const dotenv = require("dotenv");
 const { REST } = require("@discordjs/rest");
-const { Routes } = require("discord-api-types/v9");
+const { Routes } = require("discord-api-types/v10");
 const fs = require("fs");
 const { Player } = require("discord-player");
 
@@ -41,7 +42,7 @@ for (const file of slashFiles) {
 
 // Deploy slash commands using Rest API
 if (LOAD_SLASH) {
-  const rest = new REST({ version: "9" }).setToken(TOKEN);
+  const rest = new REST({ version: "10" }).setToken(TOKEN);
   console.log("Slash commands deploying");
   // Generates a URL using the Client ID and Guild ID in order to deploy commands
   rest
