@@ -114,5 +114,10 @@ module.exports = {
         .setThumbnail(song.thumbnail)
         .setFooter({ text: `Duration: ${song.duration}` });
     }
+    // Sent embed back to user
+    if (!queue.playing) await queue.play();
+    await interaction.editReply({
+      embeds: [embed],
+    });
   },
 };
