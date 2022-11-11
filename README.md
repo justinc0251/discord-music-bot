@@ -1,7 +1,7 @@
 # discord-music-bot
 
 Discord Bot
-\n -Plays music or the audio of any video published on YouTube
+<br>- Plays music or the audio of any video published on YouTube
  
 Many Commands
   /play
