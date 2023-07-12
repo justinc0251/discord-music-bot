@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const { Client, GatewayIntentBits } = require('discord.js');
+const { Client, GatewayIntentBits } = require("discord.js");
 const dotenv = require("dotenv");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v10");
@@ -12,8 +12,8 @@ const TOKEN = process.env.TOKEN;
 // node index.js load
 const LOAD_SLASH = process.argv[2] == "load";
 
-const CLIENT_ID = "";
-const GUILD_ID = "";
+const CLIENT_ID = process.env.CLIENT_ID;
+const GUILD_ID = process.env.GUILD_ID;
 
 // Allows to see what guild our bot is in
 const client = new Client({
