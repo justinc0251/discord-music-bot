@@ -44,6 +44,7 @@ player.on("connectionCreate", (queue) => {
   });
 });
 
+
 let commands = [];
 
 // Loads slash commands, only looks at files that end with .js
