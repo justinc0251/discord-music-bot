@@ -5,6 +5,7 @@ const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v10");
 const fs = require("fs");
 const { Player } = require("discord-player");
+const { VoiceConnectionStatus } = require("@discordjs/voice");
 
 dotenv.config();
 const TOKEN = process.env.TOKEN;
@@ -26,6 +27,17 @@ client.player = new Player(client, {
     quality: "highestaudio",
     highWaterMark: 1 << 25,
   },
+});
+
+client.player.on("connectionCreate", (queue) => {
+  queue.connection.voiceConnection.on("stateChange", (oldState, newState) => {
+    if (
+      oldState.status === VoiceConnectionStatus.Ready &&
+      newState.status === VoiceConnectionStatus.Connecting
+    ) {
+      queue.connection.voiceConnection.configureNetworking();
+    }
+  });
 });
 
 let commands = [];
