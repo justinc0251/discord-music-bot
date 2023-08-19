@@ -89,11 +89,11 @@ module.exports = {
       // Add Playlist to queue
       await queue.addTracks(result.tracks);
       // Specify what we added
-      embed
-        .setDescription(
-          `**[${result.tracks.length} songs from ${playlist.title}](${playlist.url})** are added to Queue!`
-        )
-        .setThumbnail(playlist.thumbnail);
+      embed.setDescription(`${playlist.title} added to Queue!`);
+      await interaction.editReply({
+        embeds: [embed],
+      });
+      // Specify what we added
     } else if (interaction.options.getSubcommand() === "search") {
       let url = interaction.options.getString("searchterms");
       // Search

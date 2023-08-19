@@ -11,5 +11,6 @@ module.exports = {
     if (!queue) return await interaction.editReply("No songs!");
     // Detroys queue, making bot leave voice
     queue.destroy();
+    await interaction.editReply("Bye!");
   },
 };

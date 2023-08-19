@@ -5,7 +5,6 @@ const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v10");
 const fs = require("fs");
 const { Player } = require("discord-player");
-const { VoiceConnectionStatus } = require("@discordjs/voice");
 
 dotenv.config();
 const TOKEN = process.env.TOKEN;
