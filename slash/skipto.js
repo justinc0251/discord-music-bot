@@ -17,7 +17,7 @@ module.exports = {
 
     if (!queue) return await interaction.editReply("No songs!");
 
-    const trackNum = interaciton.options.getNumber("tracknumber");
+    const trackNum = interaction.options.getNumber("tracknumber");
     if (trackNum > queue.tracks.length)
       return await interaction.editReply("Track number not found");
 

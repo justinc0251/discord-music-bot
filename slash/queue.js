@@ -53,7 +53,6 @@ module.exports = {
             // So +1 to display actual page number
             text: `Page ${page + 1} out of ${totalPages}`,
           })
-          .setThumbnail(currentSong.thumbnail),
       ],
     });
   },
