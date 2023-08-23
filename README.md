@@ -1,4 +1,4 @@
-# discord-music-bot
+# Discord Music Bot
 
 Discord Bot
 <br>- Plays music or the audio of any video published on YouTube
