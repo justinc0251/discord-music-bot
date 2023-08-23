@@ -16,3 +16,5 @@ Many Commands
 <br>  /shuffle
   
 Must be in voice channel for bot to join!
+
+**Demo Video**: https://www.youtube.com/watch?v=_q2OEhN2obo
